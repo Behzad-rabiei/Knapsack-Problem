@@ -23,5 +23,5 @@ module.exports = {
     FIRST_POPULATION,
     POPULATION,
     KNAPSACK_WEIGHT,
-    stuffs
+    STUFFS: stuffs
 };
