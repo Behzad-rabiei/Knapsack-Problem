@@ -1,0 +1,19 @@
+{
+  "name": "knapsack-problem",
+  "version": "1.0.0",
+  "description": "Solving knepsack problem with evolutionary algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Behzad-Rabiei/Knapsack-Problem.git"
+  },
+  "author": "Behzad Rabiei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Behzad-Rabiei/Knapsack-Problem/issues"
+  },
+  "homepage": "https://github.com/Behzad-Rabiei/Knapsack-Problem#readme"
+}
