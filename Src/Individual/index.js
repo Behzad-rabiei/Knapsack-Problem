@@ -1,20 +1,19 @@
-const {FIRST_POPULATION, STUFFS, KNAPSACK_WEIGHT} = require('../Data');
+const {STUFFS, KNAPSACK_WEIGHT} = require('../Data');
 
-class Individual{   // Each individual has stuffs, value(fitness) and weight of these stuffs
+class Individual{   // Each individual has chromosome, value(fitness) and weight of this chromosome
     constructor(){
-        this.stuffs = [],
+        this.chromosome = new Array(STUFFS.length).fill(0), //  Create array suffus.lenght and fill that array with 0
         this.weight = 0,
-        this.fitness = 0    //  Sum values of stuffs
+        this.fitness = 0    //  Sum values of stuffs that picked
     }
 
-    //  Generate Stuff
-    generateIndividual(){
+    randomGeneration(){
         const stuffsCopy = STUFFS.map(stuff => stuff);
         let temp, index;
-        for(let i=0; i<STUFFS.length; i++){
+        for(let i=0; i<this.chromosome.length; i++){
             temp = stuffsCopy[Math.floor(Math.random() * stuffsCopy.length)];
-            if(KNAPSACK_WEIGHT > this.weight + temp.weight){
-                this.stuffs.push(temp);
+            if(KNAPSACK_WEIGHT > this.weight + temp.weight){    //  Sum of weight each individual must be equal or lower than knapsack weight
+                this.chromosome[STUFFS.indexOf(temp)] = 1;
                 this.weight += temp.weight;
                 this.fitness += temp.value;
             }
@@ -25,14 +24,8 @@ class Individual{   // Each individual has stuffs, value(fitness) and weight of 
         }
     }
 
+
+
 }
 
-//  Generating array of Individuals
-let individuals = [];
-for(let i=0; i<FIRST_POPULATION; i++){
-    individuals.push(new Individual);
-    individuals[i].generateIndividual();
-}
-
-
-module.exports = individuals;
+module.exports = Individual;
