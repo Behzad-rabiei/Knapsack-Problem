@@ -1,4 +1,5 @@
 const {STUFFS, KNAPSACK_WEIGHT} = require('../Data');
+const {spliceArray} = require('../Tools');
 
 class Individual{   // Each individual has chromosome, value(fitness) and weight of this chromosome
     constructor(chromosome = new Array(STUFFS.length).fill(0), weight=0, fitness=0){
@@ -6,7 +7,6 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
         this.weight = weight,
         this.fitness = fitness   //  Sum values of stuffs that picked
     }
-
     randomGeneration(){
         const stuffsCopy = STUFFS.map(stuff => stuff);
         let temp, index;
@@ -17,10 +17,7 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
                 this.weight += temp.weight;
                 this.fitness += temp.value;
             }
-            for(let i=0; i<stuffsCopy.length; i++){
-                if(stuffsCopy[i] === temp) index=i;
-            }
-            stuffsCopy.splice(index,1);
+            spliceArray(stuffsCopy, temp);
         }
     }
     calculate(){

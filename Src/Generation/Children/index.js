@@ -1,4 +1,5 @@
 const Individual = require('../../Individual');
+const {spliceArray} = require('../../Tools');
 function generatingChildren(parents){
     let children = [];
     for(let i=0; i<parents.length / 2; i++){
@@ -18,9 +19,6 @@ function generatingChildren(parents){
         children.push(child2);
     }
     return children;
-
-
-
 }
 
 function pairing(parents){
@@ -30,7 +28,6 @@ function pairing(parents){
     spliceArray(parents, parent2);
     return {parent1, parent2};
 }
-
 
 function mating(parent1, parent2){
     let pointRange = [1,2,3,4,5,6,7,8];
@@ -65,14 +62,4 @@ function mutation(child){
     child.chromosome[index] = (child.chromosome[index] === 0) ? 1 : 0;
 }
 
-function spliceArray(array, element){
-    let index;
-    for(let i=0; i<array.length;i++){
-        if(array[i] === element){
-            index = i;
-            break;
-        }
-    }
-    array.splice(index,1);
-}
 module.exports = generatingChildren;
