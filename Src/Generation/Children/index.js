@@ -1,19 +1,19 @@
 const Individual = require('../../Individual');
 const {spliceArray} = require('../../Tools');
 function generatingChildren(parents){
-    let children = [];
+    let children = []; 
     for(let i=0; i<parents.length / 2; i++){
-        let parentsCopy = parents.map(ind => Object.assign({},ind)); // This line copy the individuals because individuals is array of objects. 
-        const {parent1, parent2} = pairing(parentsCopy);
-        const {child1,  child2}  = mating(parent1, parent2); 
-        mutation(child1);
+        //  NOTE:   javaScript past reference of object (and arrays) by default
+        let parentsCopy = parents.map(ind => Object.assign({},ind)); // This line copy the parents because parents is array of objects. 
+        const {parent1, parent2} = pairing(parentsCopy);   
+        const {child1,  child2}  = mating(parent1, parent2);    
         if(Math.random() < 0.3){
             mutation(child1);
         }
         if(Math.random() < 0.3){
             mutation(child2);
         }
-        child1.calculate();
+        child1.calculate(); 
         child2.calculate();
         children.push(child1);
         children.push(child2);
@@ -21,6 +21,7 @@ function generatingChildren(parents){
     return children;
 }
 
+ //  Selecting two parent for generate children
 function pairing(parents){
     const parent1 = parents[Math.floor(Math.random() * parents.length)];
     spliceArray(parents, parent1);
@@ -29,6 +30,7 @@ function pairing(parents){
     return {parent1, parent2};
 }
 
+//  Generating children
 function mating(parent1, parent2){
     let pointRange = [1,2,3,4,5,6,7,8];
     const num1 = pointRange[Math.floor(Math.random() * pointRange.length)];

@@ -7,6 +7,7 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
         this.weight = weight,
         this.fitness = fitness   //  Sum values of stuffs that picked
     }
+    //  Generating random invidula
     randomGeneration(){
         const stuffsCopy = STUFFS.map(stuff => stuff);
         let temp, index;
@@ -20,6 +21,7 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
             spliceArray(stuffsCopy, temp);
         }
     }
+    //  Calculating fitness and weight for a child
     calculate(){
         for(let i=0; i<this.chromosome.length; i++){
             if(this.chromosome[i] === 1){
