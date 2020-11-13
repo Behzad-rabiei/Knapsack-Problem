@@ -1,10 +1,10 @@
 const {STUFFS, KNAPSACK_WEIGHT} = require('../Data');
 
 class Individual{   // Each individual has chromosome, value(fitness) and weight of this chromosome
-    constructor(){
-        this.chromosome = new Array(STUFFS.length).fill(0), //  Create array suffus.lenght and fill that array with 0
-        this.weight = 0,
-        this.fitness = 0    //  Sum values of stuffs that picked
+    constructor(chromosome = new Array(STUFFS.length).fill(0), weight=0, fitness=0){
+        this.chromosome = chromosome, //  Create array suffus.lenght and fill that array with 0
+        this.weight = weight,
+        this.fitness = fitness   //  Sum values of stuffs that picked
     }
 
     randomGeneration(){
@@ -23,9 +23,17 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
             stuffsCopy.splice(index,1);
         }
     }
-
-
-
+    calculate(){
+        for(let i=0; i<this.chromosome.length; i++){
+            if(this.chromosome[i] === 1){
+                this.fitness += STUFFS[i].value;
+                this.weight += STUFFS[i].weight;
+            }
+        }
+        if(this.weight > KNAPSACK_WEIGHT){
+            this.fitness = 1 / this.fitness;
+        }
+    }
 }
 
 module.exports = Individual;

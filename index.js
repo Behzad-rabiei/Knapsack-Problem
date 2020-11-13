@@ -1,7 +1,7 @@
 const {NUMBER_OF_POPULATION, NUMBER_OF_GENERATION} = require('./Src/Data');
 const Individual = require('./Src/Individual');
 const rouletteSelection = require('./Src/Selection/RouletteWheel')
-
+const generatingChildren = require('./Src/Generation/Children');
 
 //  Generating first population
 let population = [];
@@ -10,17 +10,34 @@ for(let i=0; i<NUMBER_OF_POPULATION; i++){
     population[i].randomGeneration();
 }
 
-console.log(`avgF: ${averageFitness(population)}`);
+
+const maxGeneration = [];
+
 for(let i=0; i<NUMBER_OF_GENERATION; i++){
     let parents = rouletteSelection(population, NUMBER_OF_POPULATION);
-    console.log(`avgP: ${averageFitness(parents)}`);
+    let children = generatingChildren(parents);
+    population = rouletteSelection(parents.concat(children) , NUMBER_OF_POPULATION);
+    maxGeneration.push(maxer(population));
+
 }
 
+console.log(population);
+console.log('***************Answer***************');
+console.log(maxer(maxGeneration));
 
-function averageFitness(population){
-    let tot = 0;
+
+
+function maxer(population){
+    let max=0;
+    let ind;
     for(let i=0; i<population.length; i++){
-        tot += population[i].fitness;
+        if(max < population[i].fitness){
+            max = population[i].fitness;
+            ind = population[i];
+        }
     }
-    return(`avg:${tot/NUMBER_OF_POPULATION}`);
+    return ind;
 }
+
+
+
