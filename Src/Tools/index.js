@@ -31,7 +31,8 @@ function averageFitness(popultaion){
     return total/popultaion.length;
 }
 
-function logOutput(invidual, endTime){
+function logOutput(population, endTime){
+    const invidual = maxFitness(population);
     console.log('***Solution***');
     console.log(`Chromosome: ${invidual.chromosome}      Fitness: ${invidual.fitness}      Weight: ${invidual.weight}`);   
     console.log(`Executing time: ${endTime[0] + endTime[1] * 1e-9 }\n`);

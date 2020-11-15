@@ -22,7 +22,8 @@ for(let i=0; i<NUMBER_OF_GENERATION; i++){
 }
 let endTime = process.hrtime(startTime);
 
-logOutput(maxFitness(maxGeneration), endTime); 
+logOutput(maxGeneration, endTime); 
+
 
 
 
