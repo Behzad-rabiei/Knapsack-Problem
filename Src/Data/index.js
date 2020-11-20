@@ -4,7 +4,7 @@ const path = require('path');
 //  Reading data from input.txt 
 //  Then converting Data to String and spliting the data at every kind of whitespace character
 //  Note: /\s/ splits the array at every kind of whitespace character
-const filePath = path.join(__dirname, 'input.txt');   
+const filePath = path.join(__dirname, 'input3.txt');   
 const data = (fs.readFileSync(filePath).toString().split(/\s+/)); 
 
 const NUMBER_OF_POPULATION = parseInt(data[0]);   // It represent amount of individuals that we have in each generation

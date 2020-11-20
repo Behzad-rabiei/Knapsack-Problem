@@ -36,6 +36,11 @@ function logOutput(population, endTime){
     console.log('***Solution***');
     console.log(`Chromosome: ${invidual.chromosome}      Fitness: ${invidual.fitness}      Weight: ${invidual.weight}`);   
     console.log(`Executing time: ${endTime[0] + endTime[1] * 1e-9 }\n`);
+    // console.log(`***Average of Generations***`);
+    // for(i=0; i<averages.length; i++){
+    //     console.log(`${i}: ${averages[i]}`);
+    // }
+    // console.log(`\n`);
     console.log('***Inputs***')
     console.log(`Number of population: ${NUMBER_OF_POPULATION}`);
     console.log(`Number of generation: ${NUMBER_OF_GENERATION}`);
@@ -43,6 +48,8 @@ function logOutput(population, endTime){
     console.log('***Stuffs***');
     STUFFS.forEach(stuff => console.log(`weight:${stuff.weight} , value:${stuff.value}\n`));
 }
+
+
 module.exports = {
     spliceArray,
     maxFitness,
