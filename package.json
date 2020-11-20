@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Behzad-Rabiei/Knapsack-Problem/issues"
   },
-  "homepage": "https://github.com/Behzad-Rabiei/Knapsack-Problem#readme"
+  "homepage": "https://github.com/Behzad-Rabiei/Knapsack-Problem#readme",
+  "dependencies": {
+    "quickchart-js": "^1.0.3"
+  }
 }

@@ -30,7 +30,7 @@ class Individual{   // Each individual has chromosome, value(fitness) and weight
             }
         }
         if(this.weight > KNAPSACK_WEIGHT){
-            this.fitness = 1 / this.fitness;
+            this.fitness = 1 / this.weight;
         }
     }
 }

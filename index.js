@@ -13,7 +13,7 @@ for(let i=0; i<NUMBER_OF_POPULATION; i++){
     population[i].randomGeneration();
 }
 let maxGeneration = [];   //  Saving max fitness in each generation 
-// let averageGeneration = [];
+let averageGeneration = [];
 
 //  Generating
 for(let i=0; i<NUMBER_OF_GENERATION; i++){  
@@ -21,12 +21,12 @@ for(let i=0; i<NUMBER_OF_GENERATION; i++){
     let children = generatingChildren(parents); //  Selecting children
     population = rouletteSelection(parents.concat(children) , NUMBER_OF_POPULATION);    //  Selecting remainings  from parents and children
     maxGeneration.push(maxFitness(population)); 
-    // averageGeneration.push(averageFitness(population));
+    averageGeneration.push(averageFitness(population));
 }
 let endTime = process.hrtime(startTime);
 
 
-logOutput(maxGeneration, endTime); 
+logOutput(maxGeneration, averageGeneration ,endTime); 
 
 
 

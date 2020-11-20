@@ -1,4 +1,5 @@
 const {NUMBER_OF_POPULATION, NUMBER_OF_GENERATION, STUFFS, KNAPSACK_WEIGHT} = require('../Data');
+const QuickChart = require('quickchart-js');
 
 function spliceArray(array, element){   // This function get element and remove that from array
     let index;
@@ -31,22 +32,42 @@ function averageFitness(popultaion){
     return total/popultaion.length;
 }
 
-function logOutput(population, endTime){
+function logOutput(population, averages, endTime){
     const invidual = maxFitness(population);
     console.log('***Solution***');
     console.log(`Chromosome: ${invidual.chromosome}      Fitness: ${invidual.fitness}      Weight: ${invidual.weight}`);   
     console.log(`Executing time: ${endTime[0] + endTime[1] * 1e-9 }\n`);
-    // console.log(`***Average of Generations***`);
-    // for(i=0; i<averages.length; i++){
-    //     console.log(`${i}: ${averages[i]}`);
-    // }
-    // console.log(`\n`);
+    console.log(`\n`);
     console.log('***Inputs***')
     console.log(`Number of population: ${NUMBER_OF_POPULATION}`);
     console.log(`Number of generation: ${NUMBER_OF_GENERATION}`);
     console.log(`Weight of knapsack: ${KNAPSACK_WEIGHT}\n`);
     console.log('***Stuffs***');
     STUFFS.forEach(stuff => console.log(`weight:${stuff.weight} , value:${stuff.value}\n`));
+    let labels = [];
+    for(i=0; i<averages.length; i++){
+        labels.push(i+1);
+    }
+    console.log(`***Chart***`);
+    createChart(averages,labels);
+}
+
+function createChart(data,labels){
+    const chart = new QuickChart();
+    const config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label : 'Fitness',
+                    data: data
+                }
+            ]
+        }
+    }
+    chart.setConfig(config);
+    console.log(chart.getUrl());
 }
 
 
@@ -54,5 +75,5 @@ module.exports = {
     spliceArray,
     maxFitness,
     averageFitness,
-    logOutput
+    logOutput,
 }
